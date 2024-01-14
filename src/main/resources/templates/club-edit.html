@@ -16,16 +16,19 @@
                     <label for="title" class="form-label">Title</label>
                     <input th:field="*{title}" name="title" type="text" class="form-control" id="title"
                            placeholder="Input title">
+                    <p th:if="${#fields.hasErrors('title')}" class="text-danger" th:errors="*{title}"></p>
                 </div>
                 <div class="col-md-12">
                     <label for="photourl" class="form-label">Photo Url</label>
                     <input th:field="*{photoUrl}" name="photoUrl" type="text" class="form-control" id="photourl"
                            placeholder="Input photourl">
+                    <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>
                 </div>
                 <div class="col-md-12">
                     <label for="content" class="form-label">Content</label>
                     <input th:field="*{content}" name="content" type="text" class="form-control" id="content"
                            placeholder="Input content">
+                    <p th:if="${#fields.hasErrors('content')}" class="text-danger" th:errors="*{content}"></p>
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Update</button>
