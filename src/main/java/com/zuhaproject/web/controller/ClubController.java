@@ -39,8 +39,14 @@ public class ClubController {
     }
 
     @PostMapping("/clubs/new")
-    public String saveClub(@ModelAttribute("club") Club club) {
-        clubService.saveClub(club);
+    public String saveClub(@Valid @ModelAttribute("club") ClubDto clubDto
+            , BindingResult result
+            , Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("club", clubDto);
+            return "club-create";
+        }
+        clubService.saveClub(clubDto);
         return "redirect:/clubs";
     }
 
@@ -55,7 +61,7 @@ public class ClubController {
     public String updateClub(@PathVariable("clubId") Long clubId,
                              @Valid @ModelAttribute("club") ClubDto club,
                              BindingResult result) {
-        if (result.hasErrors()){
+        if (result.hasErrors()) {
             return "club-edit";
         }
         club.setId(clubId);
