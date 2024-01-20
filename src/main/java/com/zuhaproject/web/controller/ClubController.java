@@ -31,6 +31,13 @@ public class ClubController {
         return "club-list";
     }
 
+    @GetMapping("/clubs/{clubId}")
+    public String clubDetail(@PathVariable("clubId") long clubId, Model model) {
+        ClubDto clubDto = clubService.findClubById(clubId);
+        model.addAttribute("club", clubDto);
+        return "club-detail";
+    }
+
     @GetMapping("/clubs/new")
     public String createClubForm(Model model) {
         Club club = new Club();
@@ -40,11 +47,7 @@ public class ClubController {
 
     @PostMapping("/clubs/new")
     public String saveClub(@Valid @ModelAttribute("club") ClubDto clubDto, BindingResult result, Model model) {
-//        System.out.println(clubDto);
-//        System.out.println(result);
         if (result.hasErrors()) {
-            System.out.println(result);
-            System.out.println(clubDto);
             model.addAttribute("club", clubDto);
             return "club-create";
         }
