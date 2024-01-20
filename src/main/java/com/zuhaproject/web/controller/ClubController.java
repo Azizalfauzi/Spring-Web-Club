@@ -39,10 +39,12 @@ public class ClubController {
     }
 
     @PostMapping("/clubs/new")
-    public String saveClub(@Valid @ModelAttribute("club") ClubDto clubDto
-            , BindingResult result
-            , Model model) {
+    public String saveClub(@Valid @ModelAttribute("club") ClubDto clubDto, BindingResult result, Model model) {
+//        System.out.println(clubDto);
+//        System.out.println(result);
         if (result.hasErrors()) {
+            System.out.println(result);
+            System.out.println(clubDto);
             model.addAttribute("club", clubDto);
             return "club-create";
         }

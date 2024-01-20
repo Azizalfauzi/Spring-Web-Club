@@ -10,6 +10,7 @@
     <section layout:fragment="body" class="py-5">
         <div class="container">
             <form role="form" method="post" th:action="@{/clubs/new}" th:object="${club}" class="row g-3">
+                <input type="hidden" th:field="*{id}"/>
                 <div class="col-md-12">
                     <label for="title" class="form-label">Title</label>
                     <input th:field="*{title}" name="title" type="text" class="form-control" id="title"
