@@ -18,7 +18,7 @@
                            href="#!">Project name</a>
                     </div>
                     <a class="btn btn-success" th:href="@{/clubs/detail/{clubId}(clubId=${club.id})}">View Club</a>
-                    <a class="btn btn-danger" th:href="@{/clubs/detail/{clubId}(clubId=${club.id})}">Delete Club</a>
+                    <a class="btn btn-danger" th:href="@{/clubs/{clubId}/delete(clubId=${club.id})}">Delete Club</a>
                     <a class="btn btn-primary" th:href="@{/clubs/{clubId}/edit(clubId=${club.id})}">Edit Club</a>
                 </div>
             </div>

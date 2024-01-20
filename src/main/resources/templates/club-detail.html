@@ -23,6 +23,15 @@
                     <div class="small text-muted" th:text="${club.createdOn}"></div>
                     <h2 class="card-title">About this running club</h2>
                     <p class="card-text" th:text="${club.content}"></p>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <a th:href="@{/clubs}" class="btn btn-secondary btn-block">Back</a>
+                        </div>
+                        <div class="col-md-2">
+                            <a th:href="@{/clubs/{clubId}/delete(clubId=${club.id})}" class="btn btn-danger btn-block">Delete
+                                Club</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
