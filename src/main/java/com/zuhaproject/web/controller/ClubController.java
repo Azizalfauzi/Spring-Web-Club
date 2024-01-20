@@ -73,4 +73,9 @@ public class ClubController {
         clubService.updateClub(club);
         return "redirect:/clubs";
     }
+    @GetMapping("clubs/{clubId}/delete")
+    public String deleteClub(@PathVariable("clubId")long clubId){
+        clubService.delete(clubId);
+        return "redirect:/clubs";
+    }
 }
