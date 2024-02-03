@@ -10,6 +10,12 @@
                 <h1 class="fw-bolder">Runners Near You</h1>
                 <p class="lead fw-normal text-muted mb-0">Runner found in your area</p>
             </div>
+            <div>
+                <form th:action="@{/clubs/search}" class="form-inline my-2 mb-3">
+                    <input type="search" name="query" aria-label="Search" class="form-control mr-sm-2 mb-5"
+                           placeholder="Search club..."/>
+                </form>
+            </div>
             <div class="row gx-5">
                 <div th:each="club :${clubs}" class="col-lg-6 mb-4">
                     <div class="position-relative mb-3">
