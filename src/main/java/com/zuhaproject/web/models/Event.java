@@ -1,9 +1,6 @@
 package com.zuhaproject.web.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,6 +24,8 @@ public class Event {
 
     private String type;
 
+    private String photoUrl;
+
     private LocalDateTime startTime;
 
     private LocalDateTime endTime;
@@ -36,4 +35,8 @@ public class Event {
 
     @UpdateTimestamp
     private LocalDateTime updatedOn;
+
+    @ManyToOne
+    @JoinColumn(name = "club_id",nullable = false)
+    private Club club;
 }
