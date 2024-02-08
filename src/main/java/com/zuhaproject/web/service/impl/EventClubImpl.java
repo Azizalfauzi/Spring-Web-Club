@@ -9,6 +9,8 @@ import com.zuhaproject.web.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.zuhaproject.web.mapper.EventMapper.mapToEvent;
+
 @Service
 public class EventClubImpl implements EventService {
 
@@ -32,16 +34,6 @@ public class EventClubImpl implements EventService {
         eventRepository.save(event);
     }
 
-    private Event mapToEvent(EventDto eventDto){
-        return Event.builder().
-                id(eventDto.getId()).
-                name(eventDto.getName()).
-                type(eventDto.getType()).
-                photoUrl(eventDto.getPhotoUrl()).
-                startTime(eventDto.getStartTime()).
-                endTime(eventDto.getEndTime()).
-                createdOn(eventDto.getCreatedOn()).
-                updatedOn(eventDto.getUpdatedOn()).build();
-    }
+
 
 }

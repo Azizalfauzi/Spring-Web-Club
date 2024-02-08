@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.zuhaproject.web.mapper.ClubMapper.mapToClub;
+import static com.zuhaproject.web.mapper.ClubMapper.mapToClubDto;
+
 @Service
 public class ClubServiceImpl implements ClubService {
 
@@ -53,30 +56,6 @@ public class ClubServiceImpl implements ClubService {
     public List<ClubDto> searchClub(String query) {
         List<Club> clubs = clubRepository.searchClub(query);
         return clubs.stream().map(club -> mapToClubDto(club)).collect(Collectors.toList());
-    }
-
-    private Club mapToClub(ClubDto club) {
-        Club clubDto = Club.builder()
-                .id(club.getId())
-                .title(club.getTitle())
-                .photoUrl(club.getPhotoUrl())
-                .content(club.getContent())
-                .createdOn(club.getCreatedOn())
-                .updatedOn(club.getUpdatedOn())
-                .build();
-        return clubDto;
-    }
-
-    private ClubDto mapToClubDto(Club club) {
-        ClubDto clubDto = ClubDto.builder()
-                .id(club.getId())
-                .title(club.getTitle())
-                .photoUrl(club.getPhotoUrl())
-                .content(club.getContent())
-                .createdOn(club.getCreatedOn())
-                .updatedOn(club.getUpdatedOn())
-                .build();
-        return clubDto;
     }
 
 }
