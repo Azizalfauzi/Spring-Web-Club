@@ -7,7 +7,9 @@ import com.zuhaproject.web.repository.ClubRepository;
 import com.zuhaproject.web.repository.EventRepository;
 import com.zuhaproject.web.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EventClubImpl implements EventService {
 
     @Autowired
