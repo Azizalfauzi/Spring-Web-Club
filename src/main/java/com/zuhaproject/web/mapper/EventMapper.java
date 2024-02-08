@@ -15,4 +15,16 @@ public class EventMapper {
                 createdOn(eventDto.getCreatedOn()).
                 updatedOn(eventDto.getUpdatedOn()).build();
     }
+
+    public static EventDto mapToEventDto(Event event){
+        return EventDto.builder().
+                id(event.getId()).
+                name(event.getName()).
+                type(event.getType()).
+                photoUrl(event.getPhotoUrl()).
+                startTime(event.getStartTime()).
+                endTime(event.getEndTime()).
+                createdOn(event.getCreatedOn()).
+                updatedOn(event.getUpdatedOn()).build();
+    }
 }

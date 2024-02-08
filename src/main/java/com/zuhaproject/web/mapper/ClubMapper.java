@@ -3,6 +3,10 @@ package com.zuhaproject.web.mapper;
 import com.zuhaproject.web.dto.ClubDto;
 import com.zuhaproject.web.models.Club;
 
+import java.util.stream.Collectors;
+
+import static com.zuhaproject.web.mapper.EventMapper.mapToEventDto;
+
 public class ClubMapper {
     public static Club mapToClub(ClubDto club) {
         Club clubDto = Club.builder()
@@ -24,6 +28,7 @@ public class ClubMapper {
                 .content(club.getContent())
                 .createdOn(club.getCreatedOn())
                 .updatedOn(club.getUpdatedOn())
+                .events(club.getEvents().stream().map((event -> mapToEventDto(event))).collect(Collectors.toList()))
                 .build();
         return clubDto;
     }

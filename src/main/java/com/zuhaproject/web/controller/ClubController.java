@@ -70,16 +70,17 @@ public class ClubController {
         clubService.updateClub(club);
         return "redirect:/clubs";
     }
+
     @GetMapping("clubs/{clubId}/delete")
-    public String deleteClub(@PathVariable("clubId")long clubId){
+    public String deleteClub(@PathVariable("clubId") long clubId) {
         clubService.delete(clubId);
         return "redirect:/clubs";
     }
 
     @GetMapping("/clubs/search")
-    public String searchClub(@RequestParam(value = "query")String query,Model model){
+    public String searchClub(@RequestParam(value = "query") String query, Model model) {
         List<ClubDto> clubs = clubService.searchClub(query);
-        model.addAttribute("clubs",clubs);
+        model.addAttribute("clubs", clubs);
         return "club-list";
     }
 }
