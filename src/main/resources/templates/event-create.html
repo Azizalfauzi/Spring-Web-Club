@@ -6,10 +6,10 @@
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
-    <!-- Page Content-->
+    Page Content
     <section layout:fragment="body" class="py-5">
         <div class="container">
-            <form role="form" method="post" th:action="@{/clubs/new}" th:object="${club}" class="row g-3">
+            <form role="form"  method="post" th:action="@{/events/{clubId}(clubId=${clubId})}" th:object="${event}" class="row g-3">
                 <input type="hidden" th:field="*{id}"/>
                 <div class="col-md-12">
                     <label for="name" class="form-label">Name</label>
@@ -30,14 +30,22 @@
                     <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>
                 </div>
                 <div class="col-md-12">
-                    <label for="photoUrl" class="form-label">Photo url</label>
-                    <input th:field="*{photoUrl}" name="photoUrl" type="text" class="form-control" id="photoUrl"
-                           placeholder="Input photoUrl">
-                    <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>
+                    <label for="startTime" class="form-label">Start time</label>
+                    <input th:field="*{startTime}" name="startTime" type="datetime-local" class="form-control"
+                           id="startTime"
+                           placeholder="Start Time">
+                    <p th:if="${#fields.hasErrors('startTime')}" class="text-danger" th:errors="*{startTime}"></p>
+                </div>
+                <div class="col-md-12">
+                    <label for="endTime" class="form-label">End time</label>
+                    <input th:field="*{endTime}" name="endTime" type="datetime-local" class="form-control"
+                           id="endTime"
+                           placeholder="End Time">
+                    <p th:if="${#fields.hasErrors('endTime')}" class="text-danger" th:errors="*{endTime}"></p>
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Create</button>
-                    <a th:href="@{/clubs}" class="btn btn-secondary">Back</a>
+                    <button type="submit" class="btn btn-primary">Create Event</button>
+<!--                    <a th:href="@{/clubs}" class="btn btn-secondary">Back</a>-->
                 </div>
             </form>
         </div>
